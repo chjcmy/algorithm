@@ -33,6 +33,6 @@ func main() {
 	buff, _, _ := br.ReadLine()
 	n, _ := strconv.ParseInt(string(buff), 10, 64)
 
-	bw.WriteString(strconv.FormatInt(fact2(n), 10))
-	bw.Flush()
+	_, _ = bw.WriteString(strconv.FormatInt(fact2(n), 10))
+	_ = bw.Flush()
 }
