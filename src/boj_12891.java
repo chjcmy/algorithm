@@ -31,6 +31,7 @@ public class boj_12891 {
         }
         System.out.println(ans);
 
+        
     }
 
 }
