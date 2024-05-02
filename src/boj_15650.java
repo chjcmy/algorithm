@@ -12,8 +12,8 @@ public class boj_15650 {
 		
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		M = Integer.parseInt(st.nextToken());
 		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 		
 		arr = new int[M];
 		visited = new boolean[N];
@@ -21,10 +21,20 @@ public class boj_15650 {
 		dfs(0, 1);
 	}
 	
-	static void dfs(int depth, int start) {
+	static void dfs(int depth, int start) throws IOException {
 		if(depth == M) {
-			for (int i = start; i < depth; i++) {
-			
+			for (int i = 0; i < M; i++) {
+				System.out.print(arr[i] + " ");
+			}
+			System.out.println();
+			return;
+		}
+		for (int i = start; i <= N; i++) {
+			if(!visited[i - 1])  {
+				visited[i - 1] = true;
+				arr[depth] = i;
+				dfs(depth + 1, i + 1);
+				visited[i - 1] = false;
 			}
 		}
 	}

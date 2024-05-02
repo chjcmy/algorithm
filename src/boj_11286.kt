@@ -1,22 +1,28 @@
-import java.util.PriorityQueue
+import java.util.*
+import kotlin.math.abs
 
 fun main() {
     val br = System.`in`.bufferedReader()
-    val bw = System.out.bufferedWriter()
 
-    val n = br.readLine().toInt()
-    val pq = PriorityQueue<Int>()
+    val N = br.readLine().toInt()
 
-    repeat(n) {
-        val x = br.readLine().toInt()
-        if (x != 0) {
-            pq.add(x)
+    val pq = PriorityQueue<AbsInt>()
+
+    repeat(N) {
+        val cur = br.readLine().toInt()
+        if (cur == 0) {
+            if (pq.isEmpty()) println(0)
+            else println("${pq.poll().int}")
         } else {
-            bw.write((if (pq.isEmpty()) 0 else pq.poll()).toString()        )
+            pq.add(AbsInt(cur))
         }
     }
+}
 
-    bw.flush()
-    bw.close()
-    br.close()
+data class AbsInt(val int: Int) : Comparable<AbsInt> {
+    override fun compareTo(other: AbsInt): Int {
+        return abs(int).compareTo(abs(other.int)).let {
+            if (it == 0) int.compareTo(other.int) else it
+        }
+    }
 }
