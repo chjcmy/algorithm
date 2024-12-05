@@ -9,8 +9,8 @@ fun main(){
     val br = System.`in`.bufferedReader()
     val bw = System.out.bufferedWriter()
 
-    val n = br.readLine().toInt()
-    val students = MutableList(n) { br.readLine().toInt() }
+    br.readLine().toInt()
+    val students = br.readLine().split(" ").map { it.toInt() }
     val stack = Stack<Int>()
     var currentNumber = 1
 
